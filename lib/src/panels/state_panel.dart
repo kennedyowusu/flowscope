@@ -92,17 +92,26 @@ class _StateRowState extends State<_StateRow> {
                   ),
                   const SizedBox(width: 6),
                   Expanded(
+                    flex: 3,
                     child: Text(
                       widget.event.providerName,
                       style: FlowTheme.styleProviderName,
+                      overflow: TextOverflow.ellipsis,
+                      maxLines: 1,
                     ),
                   ),
-                  Text(
-                    widget.event.newValue?.toString() ?? 'null',
-                    style: FlowTheme.styleValue.copyWith(color: valueColor),
-                    overflow: TextOverflow.ellipsis,
+                  const SizedBox(width: 8),
+                  Flexible(
+                    flex: 2,
+                    child: Text(
+                      widget.event.newValue?.toString() ?? 'null',
+                      style: FlowTheme.styleValue.copyWith(color: valueColor),
+                      overflow: TextOverflow.ellipsis,
+                      maxLines: 1,
+                      textAlign: TextAlign.end,
+                    ),
                   ),
-                  const SizedBox(width: 12),
+                  const SizedBox(width: 8),
                   Text(time, style: FlowTheme.styleTimestamp),
                 ],
               ),
