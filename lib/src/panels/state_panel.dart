@@ -140,13 +140,17 @@ class _ExpandedDetail extends StatelessWidget {
             Row(
               children: [
                 const Text('- ', style: TextStyle(color: FlowTheme.red)),
-                Text(
-                  event.previousValue.toString(),
-                  style: const TextStyle(
-                    fontFamily: FlowTheme.fontMono,
-                    fontSize: 12,
-                    color: FlowTheme.red,
-                    decoration: TextDecoration.lineThrough,
+                Flexible(
+                  child: Text(
+                    event.previousValue.toString(),
+                    style: const TextStyle(
+                      fontFamily: FlowTheme.fontMono,
+                      fontSize: 12,
+                      color: FlowTheme.red,
+                      decoration: TextDecoration.lineThrough,
+                    ),
+                    overflow: TextOverflow.ellipsis,
+                    maxLines: 2,
                   ),
                 ),
               ],
@@ -156,12 +160,16 @@ class _ExpandedDetail extends StatelessWidget {
           Row(
             children: [
               const Text('+ ', style: TextStyle(color: FlowTheme.green)),
-              Text(
-                event.newValue?.toString() ?? 'null',
-                style: const TextStyle(
-                  fontFamily: FlowTheme.fontMono,
-                  fontSize: 12,
-                  color: FlowTheme.green,
+              Flexible(
+                child: Text(
+                  event.newValue?.toString() ?? 'null',
+                  style: const TextStyle(
+                    fontFamily: FlowTheme.fontMono,
+                    fontSize: 12,
+                    color: FlowTheme.green,
+                  ),
+                  overflow: TextOverflow.ellipsis,
+                  maxLines: 2,
                 ),
               ),
             ],
