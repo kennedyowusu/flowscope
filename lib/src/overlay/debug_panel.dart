@@ -47,6 +47,11 @@ class _FlowDebugPanelState extends State<FlowDebugPanel>
           children: [
             _buildHandle(),
             _buildHeader(),
+            const Divider(
+              height: 1,
+              thickness: 1,
+              color: FlowTheme.surfaceElevated,
+            ),
             _buildTabs(),
             Expanded(child: _buildTabViews()),
             ListenableBuilder(
@@ -103,6 +108,7 @@ class _FlowDebugPanelState extends State<FlowDebugPanel>
               return Container(
                 width: 8,
                 height: 8,
+                margin: const EdgeInsets.only(right: 10),
                 decoration: BoxDecoration(
                   color: FlowStore.instance.isPaused
                       ? FlowTheme.yellow
@@ -111,6 +117,12 @@ class _FlowDebugPanelState extends State<FlowDebugPanel>
                 ),
               );
             },
+          ),
+          const SizedBox(width: 8),
+          Icon(
+            Icons.settings_outlined,
+            color: FlowTheme.textSecondary,
+            size: 18,
           ),
         ],
       ),
@@ -128,13 +140,25 @@ class _FlowDebugPanelState extends State<FlowDebugPanel>
         controller: _tabController,
         indicatorColor: FlowTheme.cyan,
         indicatorWeight: 2,
+        indicatorSize: TabBarIndicatorSize.tab,
         labelColor: FlowTheme.cyan,
         unselectedLabelColor: FlowTheme.textSecondary,
+        dividerColor: Colors.transparent,
         labelStyle: const TextStyle(
           fontFamily: FlowTheme.fontMono,
           fontSize: 12,
           fontWeight: FontWeight.bold,
           letterSpacing: 1.2,
+        ),
+        unselectedLabelStyle: const TextStyle(
+          fontFamily: FlowTheme.fontMono,
+          fontSize: 12,
+          fontWeight: FontWeight.bold,
+          letterSpacing: 1.2,
+        ),
+        indicator: const BoxDecoration(
+          color: FlowTheme.surfaceElevated,
+          border: Border(bottom: BorderSide(color: FlowTheme.cyan, width: 2)),
         ),
         tabs: const [
           Tab(text: 'STATE'),
