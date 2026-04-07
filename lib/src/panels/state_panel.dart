@@ -116,7 +116,8 @@ class _StateRowState extends State<_StateRow> {
                 ],
               ),
             ),
-            if (_expanded) _ExpandedDetail(event: widget.event),
+            if (_expanded)
+              IgnorePointer(child: _ExpandedDetail(event: widget.event)),
           ],
         ),
       ),
@@ -173,22 +174,6 @@ class _ExpandedDetail extends StatelessWidget {
                 ),
               ),
             ],
-          ),
-          const SizedBox(height: 8),
-          Container(
-            padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 3),
-            decoration: BoxDecoration(
-              border: Border.all(color: FlowTheme.cyan.withValues(alpha: 0.3)),
-            ),
-            child: Text(
-              'REASON: ASYNC_DATA_FETCH',
-              style: TextStyle(
-                fontFamily: FlowTheme.fontMono,
-                fontSize: 10,
-                color: FlowTheme.cyan.withValues(alpha: 0.8),
-                letterSpacing: 1.2,
-              ),
-            ),
           ),
         ],
       ),
