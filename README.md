@@ -1,3 +1,24 @@
+<p align="center">
+  <img src="https://flowscope.dev/images/flowscope.png" alt="FlowScope" width="120" />
+</p>
+
+<h1 align="center">FlowScope</h1>
+
+<p align="center">
+  Real-time Flutter debugging SDK. Inspect Riverpod state, network requests, and events from an in-app overlay — without leaving your app.
+</p>
+
+<p align="center">
+  <a href="https://pub.dev/packages/flowscope">
+    <img src="https://img.shields.io/pub/v/flowscope.svg" alt="pub.dev" />
+  </a>
+  <a href="https://opensource.org/licenses/MIT">
+    <img src="https://img.shields.io/badge/license-MIT-blue.svg" alt="MIT License" />
+  </a>
+</p>
+
+---
+
 # FlowScope
 
 Real-time Flutter debugging SDK. Inspect Riverpod state, network requests, and events from an in-app overlay — without leaving your app.
