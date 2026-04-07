@@ -95,7 +95,7 @@ class _FlowDebugPanelState extends State<FlowDebugPanel>
             size: 16,
           ),
           const SizedBox(width: 8),
-          const Text('FLOW_SCOPE_V1.0', style: FlowTheme.styleHeader),
+          const Text('FLOWSCOPE', style: FlowTheme.styleHeader),
           const Spacer(),
           ListenableBuilder(
             listenable: FlowStore.instance,
