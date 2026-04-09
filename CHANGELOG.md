@@ -1,4 +1,10 @@
-# 0.1.1
+# 0.1.2
+
+* Added dartdoc comments to public API
+* Added example app for pub.dev
+* Improved pub.dev score
+
+## 0.1.1
 
 * Updated flutter_riverpod to ^3.0.0
 * Updated flutter_lints to ^6.0.0
