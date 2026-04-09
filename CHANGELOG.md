@@ -1,6 +1,11 @@
-# 0.1.0
+# 0.1.1
 
-## Release Information
+* Updated flutter_riverpod to ^3.0.0
+* Updated flutter_lints to ^6.0.0
+* Fixed ProviderObserver API compatibility with Riverpod 3.x
+* FlowScopeObserver now uses ProviderObserverContext
+
+## 0.1.0
 
 * Initial release
 * In-app floating overlay for Flutter debugging

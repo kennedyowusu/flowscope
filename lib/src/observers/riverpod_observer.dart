@@ -5,19 +5,19 @@ import '../core/store.dart';
 
 const _uuid = Uuid();
 
-class FlowScopeObserver extends ProviderObserver {
+base class FlowScopeObserver extends ProviderObserver {
   @override
   void didUpdateProvider(
-    ProviderBase<Object?> provider,
+    ProviderObserverContext context,
     Object? previousValue,
     Object? newValue,
-    ProviderContainer container,
   ) {
     FlowStore.instance.add(
       StateEvent(
         id: _uuid.v4(),
         timestamp: DateTime.now(),
-        providerName: provider.name ?? provider.runtimeType.toString(),
+        providerName:
+            context.provider.name ?? context.provider.runtimeType.toString(),
         previousValue: previousValue,
         newValue: newValue,
       ),
@@ -25,16 +25,13 @@ class FlowScopeObserver extends ProviderObserver {
   }
 
   @override
-  void didAddProvider(
-    ProviderBase<Object?> provider,
-    Object? value,
-    ProviderContainer container,
-  ) {
+  void didAddProvider(ProviderObserverContext context, Object? value) {
     FlowStore.instance.add(
       StateEvent(
         id: _uuid.v4(),
         timestamp: DateTime.now(),
-        providerName: provider.name ?? provider.runtimeType.toString(),
+        providerName:
+            context.provider.name ?? context.provider.runtimeType.toString(),
         previousValue: null,
         newValue: value,
       ),
