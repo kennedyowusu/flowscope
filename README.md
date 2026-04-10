@@ -139,6 +139,16 @@ FlowScope(
 )
 ```
 
+### Bloc / Cubit support
+
+FlowScope automatically observes all Blocs and Cubits in your app — no extra setup needed. Just wrap your app with `FlowScope` and all state changes, events and errors will appear in the overlay.
+
+If you want to set the observer manually:
+
+```dart
+Bloc.observer = FlowScopeBlocObserver();
+```
+
 ---
 
 ## Roadmap

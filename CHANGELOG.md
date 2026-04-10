@@ -21,3 +21,9 @@
 * FlowLogger for manual event logging
 * Draggable floating button
 * Clear, Pause, Close overlay controls
+
+## 0.2.0
+
+* Added Bloc/Cubit support via FlowScopeBlocObserver
+* Bloc state changes, events and errors now appear in State and Timeline panels
+* No configuration needed — Bloc observer is set automatically when FlowScope is enabled

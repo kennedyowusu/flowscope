@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../observers/riverpod_observer.dart';
+import '../observers/bloc_observer.dart';
 import 'floating_button.dart';
 import 'debug_panel.dart';
 
@@ -16,6 +18,14 @@ class FlowScope extends StatefulWidget {
 
 class _FlowScopeState extends State<FlowScope> {
   bool _panelVisible = false;
+
+  @override
+  void initState() {
+    super.initState();
+    if (widget.enabled) {
+      Bloc.observer = FlowScopeBlocObserver();
+    }
+  }
 
   void _openPanel() => setState(() => _panelVisible = true);
   void _closePanel() => setState(() => _panelVisible = false);
