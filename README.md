@@ -151,6 +151,12 @@ FlowScope(
 
 ---
 
+## Screenshots
+
+| | | |
+| --- | --- | --- |
+| ![State](screenshots/state.png) | ![Timeline](screenshots/timeline.png) | ![Network](screenshots/network.png) |
+
 ## Built By
 
 [Kennedy Owusu](https://github.com/kennedyowusu) — built by a Flutter developer who got tired of debugging with print statements.
