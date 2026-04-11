@@ -1,4 +1,17 @@
-# 0.1.2
+# 0.3.0
+
+* Added screen-aware logging via FlowScopeRouteObserver
+* Every event (state, network, log) is now tagged with the screen it occurred on
+* Navigation events (push, pop, replace) appear in the Timeline panel
+* Screen name visible on each Timeline event
+
+## 0.2.0
+
+* Added Bloc/Cubit support via FlowScopeBlocObserver
+* Bloc state changes, events and errors now appear in State and Timeline panels
+* No configuration needed — Bloc observer is set automatically when FlowScope is enabled
+
+## 0.1.2
 
 * Added dartdoc comments to public API
 * Added example app for pub.dev
@@ -21,16 +34,3 @@
 * FlowLogger for manual event logging
 * Draggable floating button
 * Clear, Pause, Close overlay controls
-
-## 0.2.0
-
-* Added Bloc/Cubit support via FlowScopeBlocObserver
-* Bloc state changes, events and errors now appear in State and Timeline panels
-* No configuration needed — Bloc observer is set automatically when FlowScope is enabled
-
-## 0.3.0
-
-* Added screen-aware logging via FlowScopeRouteObserver
-* Every event (state, network, log) is now tagged with the screen it occurred on
-* Navigation events (push, pop, replace) appear in the Timeline panel
-* Screen name visible on each Timeline event
