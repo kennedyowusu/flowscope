@@ -20,6 +20,7 @@ base class FlowScopeObserver extends ProviderObserver {
             context.provider.name ?? context.provider.runtimeType.toString(),
         previousValue: previousValue,
         newValue: newValue,
+        screen: FlowStore.instance.currentScreen,
       ),
     );
   }
@@ -34,6 +35,7 @@ base class FlowScopeObserver extends ProviderObserver {
             context.provider.name ?? context.provider.runtimeType.toString(),
         previousValue: null,
         newValue: value,
+        screen: FlowStore.instance.currentScreen,
       ),
     );
   }

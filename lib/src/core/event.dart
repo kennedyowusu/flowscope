@@ -33,10 +33,14 @@ sealed class FlowEvent {
   /// Where this event originated.
   final FlowEventSource source;
 
+  /// The screen this event occurred on.
+  final String screen;
+
   const FlowEvent({
     required this.id,
     required this.timestamp,
     required this.source,
+    this.screen = 'Unknown',
   });
 }
 
@@ -57,6 +61,7 @@ class StateEvent extends FlowEvent {
     required this.providerName,
     required this.previousValue,
     required this.newValue,
+    super.screen,
   }) : super(source: FlowEventSource.state);
 }
 
@@ -93,6 +98,7 @@ class NetworkEvent extends FlowEvent {
     this.requestBody,
     this.responseBody,
     this.duration,
+    super.screen,
   }) : super(source: FlowEventSource.network);
 }
 
@@ -113,6 +119,7 @@ class LogEvent extends FlowEvent {
     required this.message,
     required this.level,
     this.data,
+    super.screen,
   }) : super(source: FlowEventSource.ui);
 }
 

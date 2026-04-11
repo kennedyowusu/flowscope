@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../observers/riverpod_observer.dart';
 import '../observers/bloc_observer.dart';
+import '../observers/route_observer.dart';
 import 'floating_button.dart';
 import 'debug_panel.dart';
 
@@ -18,6 +19,7 @@ class FlowScope extends StatefulWidget {
 
 class _FlowScopeState extends State<FlowScope> {
   bool _panelVisible = false;
+  final _routeObserver = FlowScopeRouteObserver();
 
   @override
   void initState() {
@@ -38,6 +40,7 @@ class _FlowScopeState extends State<FlowScope> {
       observers: [FlowScopeObserver()],
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
+        navigatorObservers: [_routeObserver],
         home: Directionality(
           textDirection: TextDirection.ltr,
           child: Overlay(

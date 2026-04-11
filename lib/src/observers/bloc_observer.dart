@@ -16,6 +16,7 @@ class FlowScopeBlocObserver extends BlocObserver {
         providerName: bloc.runtimeType.toString(),
         previousValue: change.currentState,
         newValue: change.nextState,
+        screen: FlowStore.instance.currentScreen,
       ),
     );
   }
@@ -29,6 +30,7 @@ class FlowScopeBlocObserver extends BlocObserver {
         timestamp: DateTime.now(),
         message: '${bloc.runtimeType} error: $error',
         level: FlowLogLevel.error,
+        screen: FlowStore.instance.currentScreen,
       ),
     );
   }
@@ -42,6 +44,7 @@ class FlowScopeBlocObserver extends BlocObserver {
         timestamp: DateTime.now(),
         message: '${bloc.runtimeType} → ${event.runtimeType}',
         level: FlowLogLevel.info,
+        screen: FlowStore.instance.currentScreen,
       ),
     );
   }

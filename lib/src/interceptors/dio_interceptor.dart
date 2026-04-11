@@ -12,8 +12,6 @@ class FlowScopeDioInterceptor extends Interceptor {
   void onRequest(RequestOptions options, RequestInterceptorHandler handler) {
     final id = _uuid.v4();
     options.extra['flowscope_id'] = id;
-    options.extra['flowscope_start'] = DateTime.now().toIso8601String();
-
     _pending[id] = DateTime.now();
 
     FlowStore.instance.add(
@@ -24,6 +22,7 @@ class FlowScopeDioInterceptor extends Interceptor {
         method: options.method,
         status: NetworkStatus.pending,
         requestBody: options.data,
+        screen: FlowStore.instance.currentScreen,
       ),
     );
 
@@ -47,6 +46,7 @@ class FlowScopeDioInterceptor extends Interceptor {
         requestBody: response.requestOptions.data,
         responseBody: response.data,
         duration: duration,
+        screen: FlowStore.instance.currentScreen,
       ),
     );
 
@@ -70,6 +70,7 @@ class FlowScopeDioInterceptor extends Interceptor {
         requestBody: err.requestOptions.data,
         responseBody: err.response?.data,
         duration: duration,
+        screen: FlowStore.instance.currentScreen,
       ),
     );
 

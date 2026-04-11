@@ -19,6 +19,7 @@ class FlowLogger {
         message: message,
         data: data,
         level: level,
+        screen: FlowStore.instance.currentScreen,
       ),
     );
   }

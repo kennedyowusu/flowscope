@@ -8,6 +8,7 @@ class FlowStore extends ChangeNotifier {
 
   final _events = <FlowEvent>[];
   bool _isPaused = false;
+  String _currentScreen = 'Unknown';
 
   UnmodifiableListView<FlowEvent> get events =>
       UnmodifiableListView(_events.reversed.toList());
@@ -22,6 +23,11 @@ class FlowStore extends ChangeNotifier {
       _events.whereType<LogEvent>().toList().reversed.toList();
 
   bool get isPaused => _isPaused;
+  String get currentScreen => _currentScreen;
+
+  void setCurrentScreen(String screen) {
+    _currentScreen = screen;
+  }
 
   void add(FlowEvent event) {
     if (_isPaused) return;

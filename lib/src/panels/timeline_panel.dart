@@ -46,7 +46,12 @@ class TimelinePanel extends StatelessWidget {
             final message = _messageFromEvent(event);
             final time = DateFormat('HH:mm:ss').format(event.timestamp);
 
-            return _TimelineRow(tag: tag, time: time, message: message);
+            return _TimelineRow(
+              tag: tag,
+              time: time,
+              message: message,
+              screen: event.screen,
+            );
           },
         );
       },
@@ -58,11 +63,13 @@ class _TimelineRow extends StatelessWidget {
   final FlowTag tag;
   final String time;
   final String message;
+  final String screen;
 
   const _TimelineRow({
     required this.tag,
     required this.time,
     required this.message,
+    required this.screen,
   });
 
   @override
@@ -74,21 +81,54 @@ class _TimelineRow extends StatelessWidget {
         ),
       ),
       padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 12),
-      child: Row(
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Container(width: 3, height: 36, color: FlowTheme.timelineBar(tag)),
-          const SizedBox(width: 10),
-          Text('[$time]', style: FlowTheme.styleTimestamp),
-          const SizedBox(width: 8),
-          FlowTagBadge(tag: tag),
-          const SizedBox(width: 8),
-          Expanded(
-            child: Text(
-              message,
-              style: FlowTheme.styleProviderName,
-              overflow: TextOverflow.ellipsis,
-            ),
+          Row(
+            children: [
+              Container(
+                width: 3,
+                height: 36,
+                color: FlowTheme.timelineBar(tag),
+              ),
+              const SizedBox(width: 10),
+              Text('[$time]', style: FlowTheme.styleTimestamp),
+              const SizedBox(width: 8),
+              FlowTagBadge(tag: tag),
+              const SizedBox(width: 8),
+              Expanded(
+                child: Text(
+                  message,
+                  style: FlowTheme.styleProviderName,
+                  overflow: TextOverflow.ellipsis,
+                ),
+              ),
+            ],
           ),
+          if (screen != 'Unknown') ...[
+            const SizedBox(height: 4),
+            Padding(
+              padding: const EdgeInsets.only(left: 13),
+              child: Row(
+                children: [
+                  const Icon(
+                    Icons.phone_android_rounded,
+                    size: 10,
+                    color: FlowTheme.textMuted,
+                  ),
+                  const SizedBox(width: 4),
+                  Text(
+                    screen,
+                    style: const TextStyle(
+                      fontFamily: FlowTheme.fontMono,
+                      fontSize: 10,
+                      color: FlowTheme.textMuted,
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          ],
         ],
       ),
     );
