@@ -1,4 +1,9 @@
-# 0.3.1
+# 0.3.2
+
+* Relaxed Dart SDK constraint to support >=3.0.0
+* Package now compatible with a wider range of Flutter installations
+
+## 0.3.1
 
 * Fixed FAB position resetting after closing the debug panel
 * Fixed overflow in state panel expanded rows for long provider names and values

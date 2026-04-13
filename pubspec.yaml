@@ -1,13 +1,13 @@
 name: flowscope
 description: "Real-time Flutter debugging SDK. Inspect Riverpod state, network requests, and events from an in-app overlay — without leaving your app."
-version: 0.3.1
+version: 0.3.2
 homepage: https://flowscope.dev
 repository: https://github.com/kennedyowusu/flowscope
 issue_tracker: https://github.com/kennedyowusu/flowscope/issues
 
 environment:
-  sdk: ^3.8.0
-  flutter: ">=1.17.0"
+  sdk: '>=3.0.0 <4.0.0'
+  flutter: ">=3.10.0"
 
 dependencies:
   flutter:
