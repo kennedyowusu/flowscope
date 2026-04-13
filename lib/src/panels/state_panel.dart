@@ -4,6 +4,13 @@ import '../core/store.dart';
 import '../overlay/flow_theme.dart';
 import 'package:intl/intl.dart';
 
+String _truncate(Object? value, {int maxLength = 50}) {
+  if (value == null) return 'null';
+  final str = value.toString();
+  if (str.length <= maxLength) return str;
+  return '${str.substring(0, maxLength)}...';
+}
+
 class StatePanel extends StatelessWidget {
   const StatePanel({super.key});
 
@@ -139,11 +146,12 @@ class _ExpandedDetail extends StatelessWidget {
         children: [
           if (event.previousValue != null) ...[
             Row(
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 const Text('- ', style: TextStyle(color: FlowTheme.red)),
                 Flexible(
                   child: Text(
-                    event.previousValue.toString(),
+                    _truncate(event.previousValue),
                     style: const TextStyle(
                       fontFamily: FlowTheme.fontMono,
                       fontSize: 12,
@@ -151,7 +159,8 @@ class _ExpandedDetail extends StatelessWidget {
                       decoration: TextDecoration.lineThrough,
                     ),
                     overflow: TextOverflow.ellipsis,
-                    maxLines: 2,
+                    maxLines: 3,
+                    softWrap: true,
                   ),
                 ),
               ],
@@ -159,18 +168,20 @@ class _ExpandedDetail extends StatelessWidget {
             const SizedBox(height: 4),
           ],
           Row(
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               const Text('+ ', style: TextStyle(color: FlowTheme.green)),
               Flexible(
                 child: Text(
-                  event.newValue?.toString() ?? 'null',
+                  _truncate(event.newValue),
                   style: const TextStyle(
                     fontFamily: FlowTheme.fontMono,
                     fontSize: 12,
                     color: FlowTheme.green,
                   ),
                   overflow: TextOverflow.ellipsis,
-                  maxLines: 2,
+                  maxLines: 3,
+                  softWrap: true,
                 ),
               ),
             ],

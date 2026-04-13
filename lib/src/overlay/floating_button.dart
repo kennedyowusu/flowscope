@@ -3,15 +3,21 @@ import 'flow_theme.dart';
 
 class FlowFloatingButton extends StatefulWidget {
   final VoidCallback onTap;
+  final Offset position;
+  final ValueChanged<Offset> onPositionChanged;
 
-  const FlowFloatingButton({super.key, required this.onTap});
+  const FlowFloatingButton({
+    super.key,
+    required this.onTap,
+    required this.position,
+    required this.onPositionChanged,
+  });
 
   @override
   State<FlowFloatingButton> createState() => _FlowFloatingButtonState();
 }
 
 class _FlowFloatingButtonState extends State<FlowFloatingButton> {
-  Offset _position = const Offset(16, 100);
   bool _isDragging = false;
 
   @override
@@ -19,20 +25,22 @@ class _FlowFloatingButtonState extends State<FlowFloatingButton> {
     final screenSize = MediaQuery.of(context).size;
 
     return Positioned(
-      right: _position.dx,
-      bottom: _position.dy,
+      right: widget.position.dx,
+      bottom: widget.position.dy,
       child: GestureDetector(
         onPanStart: (_) => setState(() => _isDragging = true),
         onPanUpdate: (details) {
-          setState(() {
-            _position = Offset(
-              (_position.dx - details.delta.dx).clamp(8, screenSize.width - 60),
-              (_position.dy - details.delta.dy).clamp(
-                8,
-                screenSize.height - 60,
-              ),
-            );
-          });
+          final newPos = Offset(
+            (widget.position.dx - details.delta.dx).clamp(
+              8,
+              screenSize.width - 60,
+            ),
+            (widget.position.dy - details.delta.dy).clamp(
+              8,
+              screenSize.height - 60,
+            ),
+          );
+          widget.onPositionChanged(newPos);
         },
         onPanEnd: (_) => setState(() => _isDragging = false),
         onTap: widget.onTap,
@@ -46,12 +54,12 @@ class _FlowFloatingButtonState extends State<FlowFloatingButton> {
               color: FlowTheme.surface,
               shape: BoxShape.circle,
               border: Border.all(
-                color: FlowTheme.cyan.withAlpha(153),
+                color: FlowTheme.cyan.withValues(alpha: 0.6),
                 width: 1.5,
               ),
               boxShadow: [
                 BoxShadow(
-                  color: FlowTheme.cyan.withAlpha(51),
+                  color: FlowTheme.cyan.withValues(alpha: 0.2),
                   blurRadius: 12,
                   spreadRadius: 2,
                 ),

@@ -19,6 +19,7 @@ class FlowScope extends StatefulWidget {
 
 class _FlowScopeState extends State<FlowScope> {
   bool _panelVisible = false;
+  Offset _fabPosition = const Offset(16, 100);
   final _routeObserver = FlowScopeRouteObserver();
 
   @override
@@ -49,7 +50,13 @@ class _FlowScopeState extends State<FlowScope> {
                 builder: (context) => Stack(
                   children: [
                     widget.child,
-                    if (!_panelVisible) FlowFloatingButton(onTap: _openPanel),
+                    if (!_panelVisible)
+                      FlowFloatingButton(
+                        onTap: _openPanel,
+                        position: _fabPosition,
+                        onPositionChanged: (newPos) =>
+                            setState(() => _fabPosition = newPos),
+                      ),
                     if (_panelVisible) _PanelOverlay(onClose: _closePanel),
                   ],
                 ),

@@ -1,4 +1,9 @@
-# 0.3.0
+# 0.3.1
+
+* Fixed FAB position resetting after closing the debug panel
+* Fixed overflow in state panel expanded rows for long provider names and values
+
+## 0.3.0
 
 * Added screen-aware logging via FlowScopeRouteObserver
 * Every event (state, network, log) is now tagged with the screen it occurred on
